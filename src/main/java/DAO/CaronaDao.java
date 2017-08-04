@@ -89,6 +89,7 @@ public class CaronaDao implements CaronaDaoIF {
             
             while(result.next()){
                 Carona carona = new Carona();
+                carona.setId(result.getInt("id"));
                 carona.setIdUsuario(result.getInt("idusuario"));
                 carona.setOrigem(result.getString("origem"));
                 carona.setDestino(result.getString("destino"));

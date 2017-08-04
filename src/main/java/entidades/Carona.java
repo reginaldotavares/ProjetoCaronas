@@ -15,6 +15,7 @@ import java.util.List;
  * @author Reginaldo
  */
 public class Carona {
+    private int id;
     private int idUsuario; 
     private String origem;
     private String destino;
@@ -26,7 +27,8 @@ public class Carona {
     public Carona() {
     }
 
-    public Carona(int idUsuario, String origem, String destino, Time hora, Date data, float ajudaDeCusto, List<Pontos> listaPontos) {
+    public Carona(int id, int idUsuario, String origem, String destino, Time hora, Date data, float ajudaDeCusto, List<Pontos> listaPontos) {
+        this.id = id;
         this.idUsuario = idUsuario;
         this.origem = origem;
         this.destino = destino;
@@ -34,6 +36,14 @@ public class Carona {
         this.data = data;
         this.ajudaDeCusto = ajudaDeCusto;
         this.listaPontos = listaPontos;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getIdUsuario() {
@@ -91,8 +101,6 @@ public class Carona {
     public void setListaPontos(List<Pontos> listaPontos) {
         this.listaPontos = listaPontos;
     }
-
-    
 
     
     

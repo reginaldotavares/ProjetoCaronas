@@ -58,6 +58,7 @@ public class CadastrarCarona extends HttpServlet {
 
                 caronaGer.adicionarCarona(idUsuario, origem, destino, hora, converter.stringParaDate(data), ajudaDeCusto);
                 
+                caronaGer.adicionarPonto(idUsuario, data);
 
             } catch (SQLException ex) {
             Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
