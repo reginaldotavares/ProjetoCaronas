@@ -27,7 +27,7 @@ public class GerenciadorDeCaronas{
         ConverterData d = new ConverterData();
         novaCarona.setIdUsuario(idUsuario);
         novaCarona.setOrigem(origem);
-        novaCarona.setDestino(origem);
+        novaCarona.setDestino(destino);
         novaCarona.setHora(horaSaida);
         novaCarona.setData(data);
         novaCarona.setAjudaDeCusto(ajudaDeCusto);

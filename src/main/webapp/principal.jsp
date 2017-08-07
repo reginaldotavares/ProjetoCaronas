@@ -47,7 +47,7 @@
           <h4>Rota</h4>
           <div class="row">
                 
-                   <input name="idUsuario" value= ${sessaoId}>
+             <input name="idUsuario" value= ${sessaoId}>
                   
             <p><b>Origem:</b></p>
             <input id="origem" name="origem" value="">

@@ -22,7 +22,7 @@ public class ConnectionFactory {
     private static ConnectionFactory instance = null;
 
     public ConnectionFactory() {
-        this.url = "jdbc:postgresql://localhost:5432/caronas";
+        this.url = "jdbc:postgresql://localhost:5432/projetoPw";
         this.password = "123456";
         this.user = "postgres";
         this.driver = "org.postgresql.Driver";

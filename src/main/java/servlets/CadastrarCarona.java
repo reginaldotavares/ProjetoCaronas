@@ -43,9 +43,12 @@ public class CadastrarCarona extends HttpServlet {
             try {
                 String id = request.getParameter("idUsuario");
                 int idUsuario = Integer.parseInt(id);
-                String origem = request.getParameter("origem");
-                
-                String destino = request.getParameter("destino");
+                String[] origens = request.getParameter("origem").split(";");
+                String origem = "";
+	            origem += origens[0];
+                String[] destinos = request.getParameter("destino").split(";");
+                String destino = "";   
+	            destino += destinos[0];
                 String ajuda = request.getParameter("custo");
                 String h = request.getParameter("hora");
                 float ajudaDeCusto = Float.parseFloat(ajuda);
@@ -58,14 +61,14 @@ public class CadastrarCarona extends HttpServlet {
 
                 caronaGer.adicionarCarona(idUsuario, origem, destino, hora, converter.stringParaDate(data), ajudaDeCusto);
                 
-                caronaGer.adicionarPonto(idUsuario, data);
+                //caronaGer.adicionarPonto(idUsuario, data);
 
             } catch (SQLException ex) {
             Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
             Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("principal.jsp").forward(request, response);
     }
 
    
