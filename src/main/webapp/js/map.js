@@ -82,7 +82,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
   var total = waypts.length;
   var comp3 = document.getElementById("pontos");
-  com3.value = "";
+  comp3.value = "";
   for (var i = 0; i < waypts.length; i++) {
 	
     var locals = waypts[i].location;
