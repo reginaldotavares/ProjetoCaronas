@@ -75,10 +75,12 @@ public class CadastrarCarona extends HttpServlet {
                 stmt.setDate(5, converter.stringParaDate(data));
                 stmt.setFloat(6, ajudaDeCusto);
                 ResultSet rs = stmt.executeQuery();
-                int idCarona;
+                int idCarona = 0;
                 while(rs.next()) {
                 	idCarona = rs.getInt("idcarona");
                 }
+                stmt.close();
+                con.close();
                 String[] pontos = request.getParameter("pontos").split("; ");
                 for(int i = 0; i < pontos.length; i++) {
                 	caronaGer.adicionarPonto(idCarona, pontos[i]);
