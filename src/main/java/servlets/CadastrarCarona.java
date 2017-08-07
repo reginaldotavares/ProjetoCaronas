@@ -63,28 +63,30 @@ public class CadastrarCarona extends HttpServlet {
                 Time hora = new Time(d.getTime());
                 //Time hora = Time.valueOf(h);
                 String data = request.getParameter("data"); 
-
-                caronaGer.adicionarCarona(idUsuario, origem, destino, hora, converter.stringParaDate(data), ajudaDeCusto);
-                Connection con = new ConnectionFactory().getConnection();
-                String sql = "select idcarona from carona where idusuario = ? and origem = ? and destino = ? and horasaida = ? and data = ? and ajudadecusto = ?";
-                PreparedStatement stmt = con.prepareStatement(sql);
-                stmt.setInt(1, idUsuario);
-                stmt.setString(2, origem);
-                stmt.setString(3, destino);
-                stmt.setTime(4, hora);
-                stmt.setDate(5, converter.stringParaDate(data));
-                stmt.setFloat(6, ajudaDeCusto);
-                ResultSet rs = stmt.executeQuery();
-                int idCarona = 0;
-                while(rs.next()) {
-                	idCarona = rs.getInt("idcarona");
+                if(!request.getParameter("pontos").equals("")){
+                	caronaGer.adicionarCarona(idUsuario, origem, destino, hora, converter.stringParaDate(data), ajudaDeCusto);
+                    Connection con = new ConnectionFactory().getConnection();
+                    String sql = "select idcarona from carona where ((idusuario = ? and origem = ?) and (destino = ? and horasaida = ?)) and (data = ? and ajudadecusto = ?)";
+                    PreparedStatement stmt = con.prepareStatement(sql);
+                    stmt.setInt(1, idUsuario);
+                    stmt.setString(2, origem);
+                    stmt.setString(3, destino);
+                    stmt.setTime(4, hora);
+                    stmt.setDate(5, converter.stringParaDate(data));
+                    stmt.setFloat(6, ajudaDeCusto);
+                    ResultSet rs = stmt.executeQuery();
+                    int idCarona = 0;
+                    while(rs.next()) {
+                    	idCarona = rs.getInt("idcarona");
+                    }
+                    stmt.close();
+                    con.close();
+                    String[] pontos = request.getParameter("pontos").split("; ");
+                    for(int i = 0; i < pontos.length; i++) {
+                    	caronaGer.adicionarPonto(idCarona, pontos[i]);
+                    }
                 }
-                stmt.close();
-                con.close();
-                String[] pontos = request.getParameter("pontos").split("; ");
-                for(int i = 0; i < pontos.length; i++) {
-                	caronaGer.adicionarPonto(idCarona, pontos[i]);
-                }
+                
                 
 
             } catch (SQLException ex) {
