@@ -82,9 +82,9 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
   var total = waypts.length;
   var comp3 = document.getElementById("pontos");
- 
+  com3.value = "";
   for (var i = 0; i < waypts.length; i++) {
-	com3.value = "";
+	
     var locals = waypts[i].location;
     geocoder.geocode({'address': locals}, function(results, status) {
       if (status === 'OK') {
@@ -99,7 +99,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     if (status === 'OK') {
       posicao = results[0].geometry.location;
       var comp2 = document.getElementById("destino");
-      comp2.value = destino+"; ";
+      comp2.value = destino+"; "+posicao;
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
