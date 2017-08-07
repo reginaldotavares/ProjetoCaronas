@@ -63,7 +63,8 @@ public class CadastrarCarona extends HttpServlet {
                 Time hora = new Time(d.getTime());
                 //Time hora = Time.valueOf(h);
                 String data = request.getParameter("data"); 
-                float distancia = Float.parseFloat(request.getParameter("distancia"));
+                String[] dis = request.getParameter("distancia").split(" ");
+                float distancia = Float.parseFloat(dis[0]);
                 caronaGer.adicionarCarona(idUsuario, origem, destino, distancia, hora, converter.stringParaDate(data), ajudaDeCusto);
                 if(!request.getParameter("pontos").equals("")){
                     Connection con = new ConnectionFactory().getConnection();
