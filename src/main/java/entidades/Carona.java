@@ -19,88 +19,93 @@ public class Carona {
     private int idUsuario; 
     private String origem;
     private String destino;
+    private float distancia;
     private Time hora;
     private Date data;
     private float ajudaDeCusto;
-    List <Pontos> listaPontos;
 
     public Carona() {
     }
 
-    public Carona(int id, int idUsuario, String origem, String destino, Time hora, Date data, float ajudaDeCusto, List<Pontos> listaPontos) {
-        this.id = id;
-        this.idUsuario = idUsuario;
-        this.origem = origem;
-        this.destino = destino;
-        this.hora = hora;
-        this.data = data;
-        this.ajudaDeCusto = ajudaDeCusto;
-        this.listaPontos = listaPontos;
-    }
+	public Carona(int id, int idUsuario, String origem, String destino, float distancia, Time hora, Date data,
+			float ajudaDeCusto) {
+		super();
+		this.id = id;
+		this.idUsuario = idUsuario;
+		this.origem = origem;
+		this.destino = destino;
+		this.distancia = distancia;
+		this.hora = hora;
+		this.data = data;
+		this.ajudaDeCusto = ajudaDeCusto;
+	}
 
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public int getIdUsuario() {
-        return idUsuario;
-    }
+	public int getIdUsuario() {
+		return idUsuario;
+	}
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 
-    public String getOrigem() {
-        return origem;
-    }
+	public String getOrigem() {
+		return origem;
+	}
 
-    public void setOrigem(String origem) {
-        this.origem = origem;
-    }
+	public void setOrigem(String origem) {
+		this.origem = origem;
+	}
 
-    public String getDestino() {
-        return destino;
-    }
+	public String getDestino() {
+		return destino;
+	}
 
-    public void setDestino(String destino) {
-        this.destino = destino;
-    }
+	public void setDestino(String destino) {
+		this.destino = destino;
+	}
 
-    public Time getHora() {
-        return hora;
-    }
+	public float getDistancia() {
+		return distancia;
+	}
 
-    public void setHora(Time hora) {
-        this.hora = hora;
-    }
+	public void setDistancia(float distancia) {
+		this.distancia = distancia;
+	}
 
-    public Date getData() {
-        return data;
-    }
+	public Time getHora() {
+		return hora;
+	}
 
-    public void setData(Date data) {
-        this.data = data;
-    }
+	public void setHora(Time hora) {
+		this.hora = hora;
+	}
 
-    public float getAjudaDeCusto() {
-        return ajudaDeCusto;
-    }
+	public Date getData() {
+		return data;
+	}
 
-    public void setAjudaDeCusto(float ajudaDeCusto) {
-        this.ajudaDeCusto = ajudaDeCusto;
-    }
+	public void setData(Date data) {
+		this.data = data;
+	}
 
-    public List<Pontos> getListaPontos() {
-        return listaPontos;
-    }
+	public float getAjudaDeCusto() {
+		return ajudaDeCusto;
+	}
 
-    public void setListaPontos(List<Pontos> listaPontos) {
-        this.listaPontos = listaPontos;
-    }
+	public void setAjudaDeCusto(float ajudaDeCusto) {
+		this.ajudaDeCusto = ajudaDeCusto;
+	}
+
+
+    
 
     
     

@@ -39,14 +39,15 @@ public class CaronaDao implements CaronaDaoIF {
     public void inserir(Carona c) throws SQLException {
         try{ 
         conexao.abrir();
-        String SQL = "insert into carona(idUsuario, origem, destino, horasaida, data, ajudadecusto) values (?,?,?,?,?,?)";
+        String SQL = "insert into carona(idUsuario, origem, destino, distancia, horasaida, data, ajudadecusto) values (?,?,?,?,?,?,?)";
         pstm = con.prepareStatement(SQL);
         pstm.setInt(1, c.getIdUsuario());
         pstm.setString(2, c.getOrigem());
         pstm.setString(3, c.getDestino());
-        pstm.setTime(4, c.getHora());
-        pstm.setDate(5, (java.sql.Date) c.getData());
-        pstm.setFloat(6, c.getAjudaDeCusto());
+        pstm.setFloat(4, c.getDistancia());
+        pstm.setTime(5, c.getHora());
+        pstm.setDate(6, (java.sql.Date) c.getData());
+        pstm.setFloat(7, c.getAjudaDeCusto());
         
         pstm.executeUpdate();
         }catch(SQLException e){

@@ -22,12 +22,13 @@ import java.util.List;
  */
 public class GerenciadorDeCaronas{
     
-    public void adicionarCarona(int idUsuario, String origem, String destino, Time horaSaida, Date data, Float ajudaDeCusto) throws SQLException{
+    public void adicionarCarona(int idUsuario, String origem, String destino, float distancia, Time horaSaida, Date data, Float ajudaDeCusto) throws SQLException{
         Carona novaCarona = new Carona();
         ConverterData d = new ConverterData();
         novaCarona.setIdUsuario(idUsuario);
         novaCarona.setOrigem(origem);
         novaCarona.setDestino(destino);
+        novaCarona.setDistancia(distancia);
         novaCarona.setHora(horaSaida);
         novaCarona.setData(data);
         novaCarona.setAjudaDeCusto(ajudaDeCusto);
