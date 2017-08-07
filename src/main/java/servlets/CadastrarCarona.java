@@ -66,7 +66,7 @@ public class CadastrarCarona extends HttpServlet {
 
                 caronaGer.adicionarCarona(idUsuario, origem, destino, hora, converter.stringParaDate(data), ajudaDeCusto);
                 Connection con = new ConnectionFactory().getConnection();
-                String sql = "select idcarona from carona where idusuario = ?, origem = ?, destino = ?, horasaida = ?, data = ?, ajudadecusto = ?";
+                String sql = "select idcarona from carona where idusuario = ? and origem = ? and destino = ? and horasaida = ? and data = ? and ajudadecusto = ?";
                 PreparedStatement stmt = con.prepareStatement(sql);
                 stmt.setInt(1, idUsuario);
                 stmt.setString(2, origem);
