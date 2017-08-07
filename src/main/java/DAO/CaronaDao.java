@@ -60,7 +60,7 @@ public class CaronaDao implements CaronaDaoIF {
     public void inserirPonto(Pontos p) throws SQLException {
         try{ 
         conexao.abrir();
-        String SQL = "insert into pontos_adicionais(idCarona, ponto) values (?,?)";
+        String SQL = "insert into pontos_adicinais(idCarona, ponto) values (?,?)";
         pstm = con.prepareStatement(SQL);
         pstm.setInt(1, p.getIdCarona());
         pstm.setString(2, p.getPonto());

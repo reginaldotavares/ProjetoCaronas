@@ -8,6 +8,9 @@ package servlets;
 import converterInformacao.ConverterData;
 import gerenciadores.GerenciadorDeCaronas;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.text.ParseException;
@@ -26,6 +29,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import conexao.ConnectionFactory;
 
 
 /**
@@ -60,9 +65,23 @@ public class CadastrarCarona extends HttpServlet {
                 String data = request.getParameter("data"); 
 
                 caronaGer.adicionarCarona(idUsuario, origem, destino, hora, converter.stringParaDate(data), ajudaDeCusto);
+                Connection con = new ConnectionFactory().getConnection();
+                String sql = "select idcarona from carona where idusuario = ?, origem = ?, destino = ?, horasaida = ?, data = ?, ajudadecusto = ?";
+                PreparedStatement stmt = con.prepareStatement(sql);
+                stmt.setInt(1, idUsuario);
+                stmt.setString(2, origem);
+                stmt.setString(3, destino);
+                stmt.setTime(4, hora);
+                stmt.setDate(5, converter.stringParaDate(data));
+                stmt.setFloat(6, ajudaDeCusto);
+                ResultSet rs = stmt.executeQuery();
+                int idCarona;
+                while(rs.next()) {
+                	idCarona = rs.getInt("idcarona");
+                }
                 String[] pontos = request.getParameter("pontos").split("; ");
                 for(int i = 0; i < pontos.length; i++) {
-                	caronaGer.adicionarPonto(idUsuario, pontos[i]);
+                	caronaGer.adicionarPonto(idCarona, pontos[i]);
                 }
                 
 
