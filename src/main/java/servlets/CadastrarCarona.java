@@ -60,8 +60,11 @@ public class CadastrarCarona extends HttpServlet {
                 String data = request.getParameter("data"); 
 
                 caronaGer.adicionarCarona(idUsuario, origem, destino, hora, converter.stringParaDate(data), ajudaDeCusto);
+                String[] pontos = request.getParameter("pontos").split("; ");
+                for(int i = 0; i < pontos.length; i++) {
+                	caronaGer.adicionarPonto(idUsuario, pontos[i]);
+                }
                 
-                //caronaGer.adicionarPonto(idUsuario, data);
 
             } catch (SQLException ex) {
             Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);

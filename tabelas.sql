@@ -16,6 +16,7 @@ CREATE TABLE carona
   idUsuario integer NOT NULL,
   origem varchar(100) NOT NULL,
   destino  varchar(100) NOT NULL,
+  distancia real,
   horasaida time NOT NULL,
   data Date NOT NULL,
   ajudadecusto real NOT NULL,
