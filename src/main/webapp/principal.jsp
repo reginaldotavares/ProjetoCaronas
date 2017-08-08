@@ -101,6 +101,7 @@
       <li><a href="#" data-activates="slide-out2" class="button-collapse2 show-on-large">Cadastrar carona</a></li>
       <li><a href="#" data-activates="slide-out3" class="button-collapse3 show-on-large">Pedir carona</a></li>
       <li><a href="#" class="button-collapse3 show-on-large">Minhas Caronas</a></li>
+      
     </ul>
 
 
@@ -158,7 +159,7 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-             <input id="calendario" type="text" class="datepicker" name="calendario">
+              <input id="calendario" type="text" class="datepicker" name="calendario">
              <label for="calendario">Data da viagem</label>
             </div>
           </div>
