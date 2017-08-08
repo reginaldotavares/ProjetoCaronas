@@ -81,25 +81,33 @@
     </nav>
     
     <div class="container">
-    	<div class="row">
-        <div class="col s12 m6">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
- 
-              <p name ="origem">Origem: ${pesquisa.origem}</p>
-              <p name ="destino">Destino: ${pesquisa.destino}</p>
-              <p name ="telefone">Telefone: ${pesquisa.telefone}</p>
-              <p name ="ajudaCusto">Ajuda de custo: ${pesquisa.ajuda}</p>
-              <p name ="horaChegada">Hora de chegada ao destino: ${pesquisa.calculaHoraChegada()}</p>
+        <c:forEach items="${caronas}" var="carona">
+            <div class="col-sm-3 modal-header">
+                <%--<a href="AbrirCarona?id=${carona.id}">--%>
+                </a><legend> De ${carona.origem} para ${carona.destino}</legend>
             </div>
-            <div class="card-action">
-              <input class="btn-flat" type="submit" value="excluir">
-              <input class="btn-flat" type="submit" value="editar">
+            <div class="row">
+            <div class="col s12 m6">
+              <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+
+                  <p name ="origem">Origem: ${carona.origem}</p>
+                  <p name ="destino">Destino: ${carona.destino}</p>
+                  <p name ="telefone">Telefone: ${carona.telefone}</p>
+                  <p name ="ajudaCusto">Ajuda de custo: ${carona.ajuda}</p>
+                  <%--<p name ="horaChegada">Hora de chegada ao destino: ${carona.calculaHoraChegada()}</p>--%>
+                </div>
+                <div class="card-action">
+                  <input class="btn-flat" type="submit" value="excluir">
+                  <input class="btn-flat" type="submit" value="editar">
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </c:forEach>
+    	
     </div>
+           
 
     <script src="js/map.js"></script>
     <script async defer

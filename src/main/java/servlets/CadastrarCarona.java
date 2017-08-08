@@ -42,8 +42,7 @@ public class CadastrarCarona extends HttpServlet {
     private GerenciadorDeCaronas caronaGer = new GerenciadorDeCaronas();
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
    
-            FileItemFactory factory = new DiskFileItemFactory();
-            ServletFileUpload upload = new ServletFileUpload(factory);
+            request.setCharacterEncoding("UTF-8");
             ConverterData converter = new ConverterData();
             try {
                 String id = request.getParameter("idUsuario");

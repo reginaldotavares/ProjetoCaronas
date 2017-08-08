@@ -16,8 +16,8 @@
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper indigo darken-4">
-          <a href="index.html" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">keyboard_backspace</i></a>
-          <a href="index.html" class="brand-logo">Cadastro</a>
+          <a href="login.jsp" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">keyboard_backspace</i></a>
+          <a href="login.jsp" class="brand-logo">Cadastro</a>
         </div>
       </nav>
     </div>

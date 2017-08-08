@@ -144,7 +144,7 @@
 
     <ul id="slide-out3" class="side-nav">
       <div class="row">
-        <form class="" action="index.html" method="post">
+        <form class="" action="ListarCaronas" method="post">
           <div class="row">
             <div class="input-field col s12">
               <input id="origem" type="text" name="origem" value="">
@@ -159,7 +159,7 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="calendario" type="text" class="datepicker" name="calendario">
+              <input id="calendario" type="text" class="datepicker" name="data">
              <label for="calendario">Data da viagem</label>
             </div>
           </div>

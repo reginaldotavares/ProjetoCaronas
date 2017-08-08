@@ -9,6 +9,7 @@ import entidades.Carona;
 import entidades.Pesquisa;
 import entidades.Pontos;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -20,5 +21,5 @@ public interface CaronaDaoIF {
     public void inserirPonto(Pontos p) throws SQLException;
     public List<Carona> pesquisarCarona(String Origem, String Destino) throws SQLException;
     public Pesquisa pesquisar(int idCarona) throws SQLException;
-    public List<Carona> listarCarona() throws SQLException;
+    public List<Pesquisa> listarCarona(String origem, String destino, LocalDate data) throws SQLException;
 }

@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -111,28 +112,36 @@ public class CaronaDao implements CaronaDaoIF {
         return null;
     } 
     
-    public List<Carona> listarCarona() throws SQLException {
-        List<Carona> caronas = new ArrayList<Carona>();
+    public List<Pesquisa> listarCarona(String origem, String destino, LocalDate data) throws SQLException {
+        List<Pesquisa> pesquisas = new ArrayList<Pesquisa>();
         try {
             conexao.abrir();
             
-            String sql = "SELECT * FROM carona";
-            
+            String sql = "SELECT u.nome, u.telefone, c.origem, c.destino, c.distancia, c.data, c.horasaida, c.ajudadecusto "
+                    + "FROM carona c, usuario u, pontos_adicinais p "
+                    + "WHERE (c.idUsuario = u.idUsuario and c.idCarona = p.idCarona) and (? = c.origem or p.ponto = ?) and ? = c.destino and ? = c.data";
             pstm = con.prepareStatement(sql);
-            
+            pstm.setString(1, origem);
+            pstm.setString(2, origem);
+            pstm.setString(3, destino);
+            pstm.setDate(4, java.sql.Date.valueOf(data));
             ResultSet result = pstm.executeQuery();
   
             while(result.next()){
-                Carona carona = new Carona();
-                carona.setIdUsuario(result.getInt("idUsuario"));
-                carona.setOrigem(result.getString("origem"));
-                carona.setDestino(result.getString("destino"));
-                carona.setHora(result.getTime("hora"));
-                carona.setData(result.getDate("data"));
+                Pesquisa pesquisa = new Pesquisa();
+                pesquisa.setNomeUsuario(result.getString("nome"));
+                pesquisa.setNomeUsuario(result.getString("telefone"));
+                pesquisa.setOrigem(result.getString("origem"));
+                pesquisa.setDestino(result.getString("destino"));
+                pesquisa.setDistancia(result.getFloat("distancia"));
+                pesquisa.setData(result.getDate("data").toLocalDate());
+                pesquisa.setHora(result.getTime("horasaida").toLocalTime());
+                pesquisa.setAjuda(result.getFloat("ajudadecusto"));
                 
-                caronas.add(carona);
+ 
+                pesquisas.add(pesquisa);
             }
-            return caronas;
+            return pesquisas;
         } catch(Exception E) { 
             JOptionPane.showMessageDialog(null, E);
         } finally {

@@ -14,6 +14,7 @@ import fabricas.DaoFactoryIF;
 import interfaces.CaronaDaoIF;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -62,9 +63,9 @@ public class GerenciadorDeCaronas{
         
     }
     
-    public List<Carona> listarCaronas() throws SQLException{
+    public List<Pesquisa> listarCaronas(String origem, String destino, LocalDate data) throws SQLException{
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         CaronaDaoIF carDao = fabrica.criaCaronaDao();
-        return carDao.listarCarona();
+        return carDao.listarCarona(origem, destino, data);
     }
 }
