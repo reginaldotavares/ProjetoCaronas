@@ -122,7 +122,7 @@
             <label for="end">Destino</label>
           </div>
           <div class="input-field col s6">
-             <input id="calendario" type="text" class="datepicker" name="calendario">
+             <input id="calendario" type="text" class="datepicker">
              <label for="calendario">Data da viagem</label>
           </div>
           <div class="input-field col s6">

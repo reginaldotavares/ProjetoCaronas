@@ -118,7 +118,7 @@ function computeTotalDistance(result) {
  horasaida.innerHTML = hora.value;
  document.getElementById("horasaida").value = hora.value;
  datasaida.innerHTML = calendario.value;
- document.getElementById("datasaida").value = calendario.value;
+ document.getElementById("datasaida").value = document.getElementById("calendario").value;
  custo.innerHTML = ajuda.value;
  document.getElementById("custo").value = ajuda.value;
 }
