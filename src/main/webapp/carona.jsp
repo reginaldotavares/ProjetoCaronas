@@ -34,7 +34,7 @@
   </head>
   <body>
     <ul id="slide-out" class="side-nav">
-      <li><a href="#" class="button-collapse2 show-on-large">Cadastrar carona</a></li>
+      <li><a href="principal.jsp" class="button-collapse2 show-on-large">Cadastrar carona</a></li>
       <li><a href="#" data-activates="slide-out3" class="button-collapse3 show-on-large">Pedir carona</a></li>
       <li><a href="#" class="button-collapse3 show-on-large">Minhas Caronas</a></li>
     </ul>
