@@ -2,14 +2,17 @@ package entidades;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Pesquisa {
 	private String nomeUsuario;
 	private String origem;
 	private String destino;
 	private float distancia;
-	private Date data;
-	private Time hora;
+	private LocalDate data;
+	private LocalTime hora;
 	private float ajuda;
 	
 	
@@ -17,7 +20,7 @@ public class Pesquisa {
 	public Pesquisa() {
 	}
 
-	public Pesquisa(String nomeUsuario, String origem, String destino, float distancia, Date data, Time hora,
+	public Pesquisa(String nomeUsuario, String origem, String destino, float distancia, LocalDate data, LocalTime hora,
 			float ajuda) {
 		this.nomeUsuario = nomeUsuario;
 		this.origem = origem;
@@ -60,19 +63,19 @@ public class Pesquisa {
 		this.distancia = distancia;
 	}
 
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
-	public Time getHora() {
+	public LocalTime getHora() {
 		return hora;
 	}
 
-	public void setHora(Time hora) {
+	public void setHora(LocalTime hora) {
 		this.hora = hora;
 	}
 
@@ -84,13 +87,15 @@ public class Pesquisa {
 		this.ajuda = ajuda;
 	}
 	
-	public Time calculaHoraChegada() {
+	public LocalTime calculaHoraChegada() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("H:mm:ss");
 		float tempo = distancia/100;
 		int hours = (int) tempo;
 		int minutes = (int) (60 * (tempo - hours));
 		String t = hours+":"+minutes;
-		Time hora = Time.valueOf(t);
-		return hora;
+		LocalTime horas = LocalTime.parse(t);
+		LocalTime soma = horas.plusHours(hora.getHour()).plusMinutes(hora.getMinute());
+		return soma;
 	}
 	
 }
