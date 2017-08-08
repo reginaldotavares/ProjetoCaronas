@@ -6,6 +6,7 @@
 package interfaces;
 
 import entidades.Carona;
+import entidades.Pesquisa;
 import entidades.Pontos;
 import java.sql.SQLException;
 import java.util.List;
@@ -18,5 +19,6 @@ public interface CaronaDaoIF {
     public void inserir(Carona c)throws SQLException;
     public void inserirPonto(Pontos p) throws SQLException;
     public List<Carona> pesquisarCarona(String Origem, String Destino) throws SQLException;
+    public Pesquisa pesquisar(int idCarona) throws SQLException;
     public List<Carona> listarCarona() throws SQLException;
 }

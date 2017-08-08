@@ -37,7 +37,7 @@ function initMap() {
     zoom: 6,
     center: {lat: -6.8897071, lng: -38.561218499999995}
   });
-  directionsDisplay.setPanel(document.getElementById("tempo"));
+  
   directionsDisplay.setMap(map);
   directionsDisplay.addListener('directions_changed', function() {
           computeTotalDistance(directionsDisplay.getDirections());
@@ -71,10 +71,9 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     document.getElementById("origem").innerHTML = "";
     if (status === 'OK') {
       posicao = results[0].geometry.location;
-      document.getElementById("origem").innerHTML = origem+" "+posicao;
       
       var comp = document.getElementById("origem");
-      comp.value = origem+" "+posicao;
+      comp.value = origem+"; "+posicao;
       
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
@@ -82,15 +81,15 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   });
 
   var total = waypts.length;
+  var comp3 = document.getElementById("pontos");
+  comp3.value = "";
   for (var i = 0; i < waypts.length; i++) {
-    pontos.innerHTML = "";
+	
     var locals = waypts[i].location;
     geocoder.geocode({'address': locals}, function(results, status) {
       if (status === 'OK') {
         posicao = results[0].geometry.location;
-        pontos.innerHTML = pontos.innerHTML+results[0].formatted_address;
-        var comp3 = document.getElementById("pontos");
-        comp3.value = results[0].formatted_address+" "+posicao;
+        comp3.value = comp3.value + results[0].formatted_address+"; ";
         } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
@@ -99,9 +98,8 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   geocoder.geocode({'address': destino}, function(results, status) {
     if (status === 'OK') {
       posicao = results[0].geometry.location;
-      document.getElementById("destino").innerHTML = destino+" "+posicao;
       var comp2 = document.getElementById("destino");
-      comp2.value = destino+" "+posicao;
+      comp2.value = destino+"; "+posicao;
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }

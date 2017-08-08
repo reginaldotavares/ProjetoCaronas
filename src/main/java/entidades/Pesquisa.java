@@ -14,23 +14,24 @@ public class Pesquisa {
 	private LocalDate data;
 	private LocalTime hora;
 	private float ajuda;
-	
+	private String telefone;
 	
 	
 	public Pesquisa() {
 	}
 
-	public Pesquisa(String nomeUsuario, String origem, String destino, float distancia, LocalDate data, LocalTime hora,
-			float ajuda) {
-		this.nomeUsuario = nomeUsuario;
-		this.origem = origem;
-		this.destino = destino;
-		this.distancia = distancia;
-		this.data = data;
-		this.hora = hora;
-		this.ajuda = ajuda;
-	}
+    public Pesquisa(String nomeUsuario, String origem, String destino, float distancia, LocalDate data, LocalTime hora, float ajuda, String telefone) {
+        this.nomeUsuario = nomeUsuario;
+        this.origem = origem;
+        this.destino = destino;
+        this.distancia = distancia;
+        this.data = data;
+        this.hora = hora;
+        this.ajuda = ajuda;
+        this.telefone = telefone;
+    }
 
+	
 	public String getNomeUsuario() {
 		return nomeUsuario;
 	}
@@ -86,6 +87,16 @@ public class Pesquisa {
 	public void setAjuda(float ajuda) {
 		this.ajuda = ajuda;
 	}
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+        
+        
 	
 	public LocalTime calculaHoraChegada() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("H:mm:ss");

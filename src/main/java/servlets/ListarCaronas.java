@@ -37,14 +37,14 @@ public class ListarCaronas extends HttpServlet {
 //        UsuarioDao dao = new UsuarioDao();
        request.setCharacterEncoding("UTF-8");
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/listarUsuarios.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/listarCarona.jsp");
         List lista = new ArrayList();
          try {
              lista = caronasGer.listarCaronas();
          } catch (SQLException ex) {
              Logger.getLogger(ListarCaronas.class.getName()).log(Level.SEVERE, null, ex);
          }
-        request.setAttribute("usuarios", lista);
+        request.setAttribute("caronas", lista);
 
         dispatcher.forward(request, response);
 

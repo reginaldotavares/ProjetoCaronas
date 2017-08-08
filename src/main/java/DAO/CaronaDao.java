@@ -8,6 +8,7 @@ package DAO;
 import conexao.ClasseConexao;
 import conexao.ConnectionFactory;
 import entidades.Carona;
+import entidades.Pesquisa;
 import entidades.Pontos;
 import interfaces.CaronaDaoIF;
 import java.sql.Connection;
@@ -140,4 +141,38 @@ public class CaronaDao implements CaronaDaoIF {
         return null;
     }
     
+    public Pesquisa pesquisar(int idCarona) throws SQLException {
+        try {
+            conexao.abrir();
+            
+            String SQL = "SELECT u.nome, u.telefone, c.origem, c.destino, c.distancia, c.data, c.horasaida, c.ajudadecusto "
+                    + "FROM carona c, usuario u "
+                    + "WHERE c.idCarona = "+ idCarona +" and c.idUsuario = u.idUsuario";
+            
+            pstm = con.prepareStatement(SQL);
+            
+            ResultSet result = pstm.executeQuery();
+            
+            Pesquisa pesquisa = new Pesquisa();
+            
+            while(result.next()){
+                pesquisa.setNomeUsuario(result.getString("nome"));
+                pesquisa.setNomeUsuario(result.getString("telefone"));
+                pesquisa.setOrigem(result.getString("origem"));
+                pesquisa.setDestino(result.getString("destino"));
+                pesquisa.setDistancia(result.getFloat("distancia"));
+                pesquisa.setData(result.getDate("distancia").toLocalDate());
+                pesquisa.setHora(result.getTime("horasaida").toLocalTime());
+                pesquisa.setAjuda(result.getFloat("ajudadecusto"));
+                
+            }
+            return pesquisa;
+            
+        } catch(Exception E) { 
+            E.printStackTrace();
+        } finally {
+            conexao.liberar();
+        }
+        return null;
+    }
 }

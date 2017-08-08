@@ -7,6 +7,7 @@ package gerenciadores;
 
 import converterInformacao.ConverterData;
 import entidades.Carona;
+import entidades.Pesquisa;
 import entidades.Pontos;
 import fabricas.DaoFactory;
 import fabricas.DaoFactoryIF;
@@ -42,6 +43,12 @@ public class GerenciadorDeCaronas{
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         CaronaDaoIF carDao = fabrica.criaCaronaDao();
         return carDao.pesquisarCarona(origem, destino);
+    }
+    
+    public Pesquisa pesquisar(int id) throws SQLException{
+        DaoFactoryIF fabrica = DaoFactory.creatFactory();
+        CaronaDaoIF carDao = fabrica.criaCaronaDao();
+        return carDao.pesquisar(id);
     }
     
     public void adicionarPonto(int idCarona, String ponto) throws SQLException{

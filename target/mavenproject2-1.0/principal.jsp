@@ -47,7 +47,7 @@
           <h4>Rota</h4>
           <div class="row">
                 
-                   <input name="idUsuario" value= ${sessaoId}>
+             <input name="idUsuario" value= ${sessaoId}>
                   
             <p><b>Origem:</b></p>
             <input id="origem" name="origem" value="">
@@ -100,6 +100,8 @@
     <ul id="slide-out" class="side-nav">
       <li><a href="#" data-activates="slide-out2" class="button-collapse2 show-on-large">Cadastrar carona</a></li>
       <li><a href="#" data-activates="slide-out3" class="button-collapse3 show-on-large">Pedir carona</a></li>
+      <li><a href="#" class="button-collapse3 show-on-large">Minhas Caronas</a></li>
+      
     </ul>
 
 
@@ -153,6 +155,12 @@
             <div class="input-field col s12">
               <input id="destino" type="text" name="destino" value="">
               <label for="destino">Destino</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="calendario" type="text" class="datepicker" name="calendario">
+             <label for="calendario">Data da viagem</label>
             </div>
           </div>
           <div class="row">

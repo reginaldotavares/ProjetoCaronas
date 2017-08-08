@@ -16,7 +16,7 @@
     <attribute>
       <name>destinatario</name>
       <rtexprvalue>true</rtexprvalue>
-      <required>true</required>
+      <!-- <required>true</required> -->
       <type>int</type>
     </attribute>
   </tag>
