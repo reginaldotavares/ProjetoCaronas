@@ -15,7 +15,7 @@ public class Pesquisa {
 	private LocalTime hora;
 	private float ajuda;
 	private String telefone;
-	
+	private LocalTime viagem;
 	
 	public Pesquisa() {
 	}
@@ -88,23 +88,31 @@ public class Pesquisa {
 		this.ajuda = ajuda;
 	}
 
-    public String getTelefone() {
-        return telefone;
-    }
+        public String getTelefone() {
+            return telefone;
+        }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+        public void setTelefone(String telefone) {
+            this.telefone = telefone;
+        }
+
+        public LocalTime getViagem() {
+            return viagem;
+        }
+
+        public void setViagem(LocalTime viagem) {
+            this.viagem = viagem;
+        }
         
         
 	
 	public LocalTime calculaHoraChegada() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("H:mm:ss");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mm:ss");
 		float tempo = distancia/100;
 		int hours = (int) tempo;
 		int minutes = (int) (60 * (tempo - hours));
 		String t = hours+":"+minutes;
-		LocalTime horas = LocalTime.parse(t);
+		LocalTime horas = LocalTime.of(hours, minutes);
 		LocalTime soma = horas.plusHours(hora.getHour()).plusMinutes(hora.getMinute());
 		return soma;
 	}

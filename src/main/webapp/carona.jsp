@@ -59,7 +59,7 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-             <input id="calendario" type="text" class="datepicker" name="calendario">
+             <input id="calendario" type="text" class="datepicker" name="data">
              <label for="calendario">Data da viagem</label>
             </div>
           </div>
@@ -84,22 +84,18 @@
         <c:forEach items="${caronas}" var="carona">
             <div class="col-sm-3 modal-header">
                 <%--<a href="AbrirCarona?id=${carona.id}">--%>
-                </a><legend> De ${carona.origem} para ${carona.destino}</legend>
             </div>
             <div class="row">
             <div class="col s12 m6">
               <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
-
-                  <p name ="origem">Origem: ${carona.origem}</p>
-                  <p name ="destino">Destino: ${carona.destino}</p>
-                  <p name ="telefone">Telefone: ${carona.telefone}</p>
-                  <p name ="ajudaCusto">Ajuda de custo: ${carona.ajuda}</p>
-                  <%--<p name ="horaChegada">Hora de chegada ao destino: ${carona.calculaHoraChegada()}</p>--%>
-                </div>
-                <div class="card-action">
-                  <input class="btn-flat" type="submit" value="excluir">
-                  <input class="btn-flat" type="submit" value="editar">
+                  <p>Nome: ${carona.nomeUsuario}</p>
+                  <p>Telefone: ${carona.telefone}</p>
+                  <p>Origem: ${carona.origem}</p>
+                  <p>Destino: ${carona.destino}</p>
+                  <p>Ajuda de custo: ${carona.ajuda}</p>
+                  <p>Data: ${carona.data}</p>
+                  <p>Tempo de viagem: ${carona.viagem}</p>
                 </div>
               </div>
             </div>

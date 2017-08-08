@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import entidades.Pesquisa;
 import gerenciadores.GerenciadorDeCaronas;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -46,7 +47,7 @@ public class ListarCaronas extends HttpServlet {
         String data = request.getParameter("data");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate lDate = LocalDate.parse(data, formatter);
-        List lista = new ArrayList();
+        List<Pesquisa> lista = new ArrayList();
          try {
              lista = caronasGer.listarCaronas(origem, destino, lDate);
          } catch (SQLException ex) {

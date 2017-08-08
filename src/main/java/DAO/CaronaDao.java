@@ -16,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -119,7 +120,7 @@ public class CaronaDao implements CaronaDaoIF {
             
             String sql = "SELECT u.nome, u.telefone, c.origem, c.destino, c.distancia, c.data, c.horasaida, c.ajudadecusto "
                     + "FROM carona c, usuario u, pontos_adicinais p "
-                    + "WHERE (c.idUsuario = u.idUsuario and c.idCarona = p.idCarona) and (? = c.origem or p.ponto = ?) and ? = c.destino and ? = c.data";
+                    + "WHERE (c.idUsuario = u.idUsuario and c.idCarona = p.idCarona) and (? ilike c.origem or p.ponto ilike ?) and ? = c.destino and ? = c.data";
             pstm = con.prepareStatement(sql);
             pstm.setString(1, origem);
             pstm.setString(2, origem);
@@ -130,14 +131,15 @@ public class CaronaDao implements CaronaDaoIF {
             while(result.next()){
                 Pesquisa pesquisa = new Pesquisa();
                 pesquisa.setNomeUsuario(result.getString("nome"));
-                pesquisa.setNomeUsuario(result.getString("telefone"));
-                pesquisa.setOrigem(result.getString("origem"));
+                pesquisa.setTelefone(result.getString("telefone"));
+                pesquisa.setOrigem(origem);
                 pesquisa.setDestino(result.getString("destino"));
                 pesquisa.setDistancia(result.getFloat("distancia"));
                 pesquisa.setData(result.getDate("data").toLocalDate());
                 pesquisa.setHora(result.getTime("horasaida").toLocalTime());
                 pesquisa.setAjuda(result.getFloat("ajudadecusto"));
-                
+                LocalTime tempo = pesquisa.calculaHoraChegada();
+                pesquisa.setViagem(tempo);
  
                 pesquisas.add(pesquisa);
             }
@@ -162,9 +164,11 @@ public class CaronaDao implements CaronaDaoIF {
             
             ResultSet result = pstm.executeQuery();
             
-            Pesquisa pesquisa = new Pesquisa();
             
+            Pesquisa pesquisa = new Pesquisa();
             while(result.next()){
+                
+                
                 pesquisa.setNomeUsuario(result.getString("nome"));
                 pesquisa.setNomeUsuario(result.getString("telefone"));
                 pesquisa.setOrigem(result.getString("origem"));
